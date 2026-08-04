@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jasper Gao – Math & Tech Blog</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+  <!-- Tailwind CDN + custom theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FAF9F6',
+            ink: '#2D2D2D',
+            accent: '#C84B31'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 项目自有样式 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-paper text-ink antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-10 bg-paper/90 backdrop-blur border-b border-ink/10">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
+      <a href="#" class="text-lg font-bold tracking-tight">Jasper Gao</a>
+      <nav class="flex items-center gap-4 sm:gap-8 text-sm sm:text-base">
+        <a href="#about" class="hover:text-accent transition-colors">About</a>
+        <a href="#writings" class="hover:text-accent transition-colors">Writings</a>
+        <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="about" class="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-32">
+      <h1 class="font-blog-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+        Hey, I'm Jasper Gao.
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed mb-4 text-ink/70">
+        An undergraduate at <strong>NYU Tandon</strong> pursuing a <strong>Math</strong> major,
+        passionate about number theory, probability, and elegant software.
+      </p>
+      <p class="text-base md:text-lg leading-relaxed text-ink/70">
+        Euler's identity: \( e^{i\pi} + 1 = 0 \)
+      </p>
+      <div class="mt-8 overflow-x-auto">
+        \[ \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi} \]
+      </div>
+    </section>
+
+    <!-- Writings 占位 -->
+    <section id="writings" class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+      <h2 class="font-blog-serif text-3xl md:text-4xl mb-8">Writings</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold mb-2">Coming Soon</h3>
+          <p class="text-sm leading-relaxed text-ink/70">
+            Thoughts on mathematics, technology, and life.
+          </p>
+        </article>
+        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold mb-2">Coming Soon</h3>
+          <p class="text-sm leading-relaxed text-ink/70">
+            Notes on probability and stochastic processes.
+          </p>
+        </article>
+        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold mb-2">Coming Soon</h3>
+          <p class="text-sm leading-relaxed text-ink/70">
+            Mini projects and code experiments.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects 占位 -->
+    <section id="projects" class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+      <h2 class="font-blog-serif text-3xl md:text-4xl mb-8">Projects</h2>
+      <div class="border border-dashed border-ink/20 rounded-xl p-8 text-center text-ink/50">
+        Coming soon.
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink/10 py-8 mt-8">
+    <div class="max-w-4xl mx-auto px-4 text-center text-sm text-ink/50">
+      © 2025 Jasper Gao. Built with ♥ and KaTeX.
+    </div>
+  </footer>
+
+  <!-- KaTeX JS + auto-render -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>
