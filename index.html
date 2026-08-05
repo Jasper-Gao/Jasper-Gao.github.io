@@ -1,113 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jasper Gao - Math &amp; Tech Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasper Gao</title>
+<meta name="description" content="Jasper Gao — Mathematics &amp; Computer Science, NYU Tandon School of Engineering.">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-
-  <!-- KaTeX CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-
-  <!-- Tailwind CDN + custom theme -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            paper: '#FAF9F6',
-            ink: '#2D2D2D',
-            accent: '#C84B31'
-          }
-        }
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#FAF7F2',
+          ink: '#1A1A1A',
+          rule: '#E4DFD5',
+        },
+        fontFamily: {
+          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        },
+        maxWidth: {
+          'read': '42rem',
+        },
       }
     }
-  </script>
+  }
+</script>
 
-  <!-- 项目自有样式 -->
-  <link rel="stylesheet" href="css/style.css">
+<!-- Google Fonts: Inter + Source Serif 4 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-paper text-ink antialiased">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-10 bg-paper/90 backdrop-blur border-b border-ink/10">
-    <div class="max-w-4xl mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
-      <a href="#" class="text-lg font-bold tracking-tight">Jasper Gao</a>
-      <nav class="flex items-center gap-4 sm:gap-8 text-sm sm:text-base">
-        <a href="#about" class="hover:text-accent transition-colors">About</a>
-        <a href="#writings" class="hover:text-accent transition-colors">Writings</a>
-        <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-paper text-ink font-sans antialiased">
 
-  <main>
-    <!-- Hero -->
-    <section id="about" class="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-32">
-      <h1 class="font-blog-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-        Hey, I'm Jasper Gao.
-      </h1>
-      <p class="text-lg md:text-xl leading-relaxed mb-4 text-ink/70">
-        An undergraduate at <strong>NYU Tandon</strong> pursuing a <strong>Math</strong> major,
-        passionate about number theory, probability, and elegant software.
-      </p>
-      <p class="text-base md:text-lg leading-relaxed text-ink/70">
-        Euler's identity: \( e^{i\pi} + 1 = 0 \)
-      </p>
-      <div class="mt-8 overflow-x-auto">
-        \[ \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi} \]
+  <div class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="md:w-1/4 md:min-w-[260px] md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-rule flex flex-col justify-between px-8 py-10 md:py-14">
+      <div>
+        <a href="#top" class="block mb-14">
+          <span class="font-serif text-xl tracking-tight">Jasper Gao</span>
+          <span class="block text-[11px] uppercase tracking-[0.18em] text-ink/45 mt-1">Mathematics &amp; CS</span>
+        </a>
+
+        <nav id="side-nav" class="space-y-[6px] text-[13.5px]">
+          <a href="#about" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">About</a>
+          <a href="#interests" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Interests</a>
+          <a href="#education" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Education</a>
+          <a href="#experience" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Experience &amp; Projects</a>
+          <a href="#skills" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Skills</a>
+          <a href="#contact" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Contact</a>
+          <div class="h-px bg-rule my-3"></div>
+          <a href="blog.html" class="nav-link block py-1 text-ink/55 hover:text-ink transition-colors">Blog</a>
+        </nav>
       </div>
-    </section>
 
-    <!-- Writings 占位 -->
-    <section id="writings" class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
-      <h2 class="font-blog-serif text-3xl md:text-4xl mb-8">Writings</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
-          <h3 class="font-semibold mb-2">Coming Soon</h3>
-          <p class="text-sm leading-relaxed text-ink/70">
-            Thoughts on mathematics, technology, and life.
-          </p>
-        </article>
-        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
-          <h3 class="font-semibold mb-2">Coming Soon</h3>
-          <p class="text-sm leading-relaxed text-ink/70">
-            Notes on probability and stochastic processes.
-          </p>
-        </article>
-        <article class="bg-white/60 border border-ink/10 rounded-xl p-6 hover:shadow-md transition-shadow">
-          <h3 class="font-semibold mb-2">Coming Soon</h3>
-          <p class="text-sm leading-relaxed text-ink/70">
-            Mini projects and code experiments.
-          </p>
-        </article>
+      <div class="hidden md:flex items-center gap-4 text-[12px] text-ink/40 mt-14">
+        <a href="https://github.com/Jasper-Gao" target="_blank" rel="noopener" class="hover:text-ink transition-colors">GitHub</a>
+        <span>·</span>
+        <a href="mailto:bg2941@nyu.edu" class="hover:text-ink transition-colors">Email</a>
       </div>
-    </section>
+    </aside>
 
-    <!-- Projects 占位 -->
-    <section id="projects" class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
-      <h2 class="font-blog-serif text-3xl md:text-4xl mb-8">Projects</h2>
-      <div class="border border-dashed border-ink/20 rounded-xl p-8 text-center text-ink/50">
-        Coming soon.
+    <!-- ============ MAIN CONTENT ============ -->
+    <main id="top" class="md:w-3/4 flex-1">
+      <div class="max-w-read mx-auto px-8 py-16 md:py-24">
+
+        <!-- ABOUT -->
+        <section id="about" class="scroll-mt-20 mb-20">
+          <h1 class="font-serif text-[28px] md:text-[32px] leading-snug mb-6">About</h1>
+          <p class="leading-[1.85] text-[15.5px] text-ink/85">
+            I am an incoming sophomore student at the Tandon School of Engineering, New York University. I studied at Beijing 101 High School prior to college. My interest lies at the intersection of applied mathematics and machine learning.
+          </p>
+        </section>
+
+        <!-- INTERESTS -->
+        <section id="interests" class="scroll-mt-20 mb-20">
+          <h2 class="font-serif text-[22px] mb-6">Interests</h2>
+          <ul class="space-y-2 text-[15.5px] text-ink/85">
+            <li class="flex gap-3"><span class="text-ink/30">—</span>Artificial intelligence</li>
+            <li class="flex gap-3"><span class="text-ink/30">—</span>Mathematical modeling</li>
+            <li class="flex gap-3"><span class="text-ink/30">—</span>Computer vision &amp; quantum computing</li>
+          </ul>
+          <p class="mt-8 text-[13px] uppercase tracking-[0.14em] text-ink/40 mb-3">Beyond academics</p>
+          <p class="text-[15.5px] text-ink/85">Chess, table tennis.</p>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="scroll-mt-20 mb-20">
+          <h2 class="font-serif text-[22px] mb-8">Education</h2>
+
+          <div class="mb-10">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+              <h3 class="text-[15.5px] font-medium">New York University — Tandon School of Engineering</h3>
+              <span class="text-[13px] text-ink/45 whitespace-nowrap">Sept 2025 — Present</span>
+            </div>
+            <p class="text-[14.5px] text-ink/70 leading-relaxed">Incoming Mathematics &amp; Computer Science double major</p>
+            <p class="text-[14.5px] text-ink/70 leading-relaxed mt-1">
+              CGPA: <span class="whitespace-nowrap">3.948 / 4.0</span> &nbsp;(Major CGPA: <span class="whitespace-nowrap">4.0 / 4.0</span>)
+            </p>
+            <p class="text-[13.5px] text-ink/55 leading-relaxed mt-3">
+              Core courses: Linear Algebra, Multivariable Calculus, Discrete Math, Honors Probability, Intro to Python, Data Structures &amp; Algorithms, Object-Oriented Programming (C++).
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+              <h3 class="text-[15.5px] font-medium">Beijing 101 High School</h3>
+              <span class="text-[13px] text-ink/45 whitespace-nowrap">Sept 2022 — Jul 2025</span>
+            </div>
+            <p class="text-[14.5px] text-ink/70 leading-relaxed">International Baccalaureate Diploma Programme</p>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE & PROJECTS -->
+        <section id="experience" class="scroll-mt-20 mb-20">
+          <h2 class="font-serif text-[22px] mb-8">Experience &amp; Projects</h2>
+
+          <div class="space-y-10">
+
+            <article>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-[15.5px] font-medium">Consulting Assistant, CAICT</h3>
+                <span class="text-[13px] text-ink/45 whitespace-nowrap">Jul — Aug 2026</span>
+              </div>
+              <p class="text-[13.5px] text-ink/50 italic mb-2">China Academy of Information and Communications Technology</p>
+              <p class="text-[14.5px] text-ink/75 leading-relaxed">Architecture, Engineering, and Construction large-model evaluation and benchmarking.</p>
+            </article>
+
+            <article>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-[15.5px] font-medium">Lightweight Chess Engine Development</h3>
+                <span class="text-[13px] text-ink/45 whitespace-nowrap">May — Jun 2026</span>
+              </div>
+              <p class="text-[14.5px] text-ink/75 leading-relaxed">
+                Developed a chess engine with alpha-beta optimization, custom bitboards, and tapered evaluation functions in Python. Optimized tree search efficiency through transposition tables, quiescence search, and killer heuristics, achieving a 3–5&times; reduction in branch expansion.
+              </p>
+            </article>
+
+            <article>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-[15.5px] font-medium">Probability Analysis &amp; Optimization in Mafia (Werewolf) Games</h3>
+                <span class="text-[13px] text-ink/45 whitespace-nowrap">Nov 2024 — Mar 2025</span>
+              </div>
+              <p class="text-[14.5px] text-ink/75 leading-relaxed">
+                Modeled the underlying stochastic processes of dice mechanics and player roles using recursive analysis and geometric series expansions to derive analytical winning probabilities.
+              </p>
+            </article>
+
+            <article>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-[15.5px] font-medium">MNIST Classification with Quantum Neural Network</h3>
+                <span class="text-[13px] text-ink/45 whitespace-nowrap">Mar — Nov 2024</span>
+              </div>
+              <p class="text-[14.5px] text-ink/75 leading-relaxed">
+                Designed and implemented a Quantum Neural Network (QNN) architecture for MNIST handwritten digit classification, evaluating performance across diverse quantum image encodings and ansatz structures. Found that a brick-pattern entanglement structure yields the most stable, accurate results; that FRQI encoding outperforms NEQR in stability and resource efficiency; and that CRy entanglers induce severe convergence instability.
+              </p>
+            </article>
+
+            <article>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <h3 class="text-[15.5px] font-medium">International Mathematical Modeling Challenge (IMMC) Report</h3>
+                <span class="text-[13px] text-ink/45 whitespace-nowrap">Feb — Mar 2024</span>
+              </div>
+              <p class="text-[14.5px] text-ink/75 leading-relaxed">
+                Formulated a non-linear mathematical model to evaluate and optimize regional strategies for reducing CO&#8322; emissions.
+              </p>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="scroll-mt-20 mb-20">
+          <h2 class="font-serif text-[22px] mb-6">Skills</h2>
+
+          <p class="text-[14.5px] text-ink/75 leading-relaxed mb-6">
+            C / C++; Python (NumPy, Pandas, Scikit-learn, Matplotlib)
+          </p>
+
+          <p class="text-[13px] uppercase tracking-[0.14em] text-ink/40 mb-2">Key domains</p>
+          <p class="text-[14.5px] text-ink/75 leading-relaxed mb-6">
+            Machine Learning &amp; Deep Learning; Quantum Neural Networks (QNN); Mathematical Modeling; Probability Theory
+          </p>
+
+          <p class="text-[13px] uppercase tracking-[0.14em] text-ink/40 mb-2">Exploring</p>
+          <p class="text-[14.5px] text-ink/75 leading-relaxed">
+            Computer Architecture, Compilers, Operating Systems, Stochastic Processes
+          </p>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="scroll-mt-20 mb-8">
+          <h2 class="font-serif text-[22px] mb-6">Contact</h2>
+          <div class="space-y-2 text-[15.5px]">
+            <p><a href="mailto:bg2941@nyu.edu" class="text-ink/85 hover:text-ink underline underline-offset-4 decoration-rule">bg2941@nyu.edu</a></p>
+            <p><a href="https://github.com/Jasper-Gao" target="_blank" rel="noopener" class="text-ink/85 hover:text-ink underline underline-offset-4 decoration-rule">github.com/Jasper-Gao</a></p>
+          </div>
+        </section>
+
+        <footer class="pt-10 mt-10 border-t border-rule text-[12px] text-ink/35">
+          Jasper Gao — Tandon School of Engineering, New York University
+        </footer>
+
       </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
-  <!-- Footer -->
-  <footer class="border-t border-ink/10 py-8 mt-8">
-    <div class="max-w-4xl mx-auto px-4 text-center text-sm text-ink/50">
-      © 2025 Jasper Gao. Built with ♥ and KaTeX.
-    </div>
-  </footer>
-
-  <!-- KaTeX JS + auto-render -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="js/main.js"></script>
+<script defer src="js/main.js"></script>
 </body>
 </html>

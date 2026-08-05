@@ -1,0 +1,141 @@
+/* ============================================
+   Base refinements
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Letter-spacing for headings, paco.me-style restraint */
+h1, h2, h3 {
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   Sidebar navigation active state
+   ============================================ */
+
+.nav-link {
+  position: relative;
+  padding-left: 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.nav-link.is-active {
+  color: #1A1A1A;
+  padding-left: 6px;
+}
+
+.nav-link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #1A1A1A;
+  opacity: 0.5;
+}
+
+/* ============================================
+   Selection color
+   ============================================ */
+
+::selection {
+  background-color: #E4DFD5;
+  color: #1A1A1A;
+}
+
+/* ============================================
+   KaTeX edge polish
+   ============================================ */
+
+.katex {
+  font-size: 1em !important;
+}
+
+.katex-display {
+  margin: 1.25em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+
+/* Inline math should not force extra line height */
+p .katex {
+  line-height: normal;
+}
+
+/* ============================================
+   Code block polish (highlight.js)
+   ============================================ */
+
+pre {
+  background-color: #F5F2EC !important;
+  border: 1px solid #E4DFD5;
+  border-radius: 6px;
+  padding: 1em 1.2em !important;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+p code, li code {
+  background-color: #F0EDE6;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* ============================================
+   Scrollbar (subtle, webkit only)
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #E4DFD5;
+  border-radius: 999px;
+  border: 3px solid #FAF7F2;
+}
+
+/* ============================================
+   Focus visibility (accessibility)
+   ============================================ */
+
+a:focus-visible {
+  outline: 2px solid #1A1A1A;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .nav-link {
+    transition: none;
+  }
+}
