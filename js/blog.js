@@ -6,11 +6,39 @@
    controls fallback order before sorting by date.
    ================================================================== */
 const POST_FILES = [
-  'posts/demo.md', 
+  'posts/demo.md',
 ];
 
 /* Allowed sidebar tags, in display order */
 const TAGS = ['All', 'Math & CS', 'Readings', 'Table Tennis'];
+
+/* ------------------------------------------------------------------
+   Site root inference
+   ------------------------------------------------------------------
+   The blog may be served from a subdirectory (e.g. /repo/ on
+   GitHub Pages). We can determine the correct prefix by looking at
+   the location of this script (js/blog.js) and removing the /js.
+   ------------------------------------------------------------------ */
+function getScriptBase() {
+  const script = document.currentScript || document.querySelector('script[src$="blog.js"]');
+  if (!script || !script.src) return '';
+  const dir = script.src.substring(0, script.src.lastIndexOf('/'));
+  return dir.replace(/\/js$/, '');
+}
+const SITE_ROOT = getScriptBase();
+
+function resolvePostUrl(file) {
+  // Already absolute (http(s):// or leading /)
+  if (/^(https?:)?\/\//i.test(file) || file.startsWith('/')) {
+    return file;
+  }
+  // Build an absolute URL based on the site root found above
+  if (SITE_ROOT) {
+    return `${SITE_ROOT.replace(/\/$/, '')}/${file}`;
+  }
+  // Fallback: keep original relative URL
+  return file;
+}
 
 let POSTS = [];        // parsed post objects: { title, date, tag, summary, body, file }
 let activeTag = 'All';
@@ -43,8 +71,9 @@ async function loadPosts() {
   const statusEl = document.getElementById('list-status');
   const results = await Promise.allSettled(
     POST_FILES.map(async (file) => {
-      const res = await fetch(file);
-      if (!res.ok) throw new Error(`Could not load ${file} (${res.status})`);
+      const url = resolvePostUrl(file);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Could not load ${file} (${res.status}) from ${url}`);
       const raw = await res.text();
       const { meta, content } = splitFrontMatter(raw);
       return {
