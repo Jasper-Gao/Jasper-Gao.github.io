@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog · Jasper Gao</title>
+<meta name="description" content="Notes on mathematics, computer science, readings, and table tennis — Jasper Gao.">
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#FAF7F2',
+          ink: '#1A1A1A',
+          rule: '#E4DFD5',
+        },
+        fontFamily: {
+          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        },
+        maxWidth: {
+          'read': '42rem',
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts: Inter + Source Serif 4 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- Markdown + YAML Front Matter -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-paper text-ink font-sans antialiased">
+
+  <div class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="md:w-1/4 md:min-w-[260px] md:h-screen md:sticky md:top-0 border-b md:border-b-0 md:border-r border-rule flex flex-col justify-between px-8 py-10 md:py-14">
+      <div>
+        <a href="index.html" class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mb-14">
+          <span aria-hidden="true">&larr;</span> Home
+        </a>
+
+        <div class="mb-10">
+          <span class="font-serif text-xl tracking-tight block">Blog</span>
+          <span class="block text-[11px] uppercase tracking-[0.18em] text-ink/45 mt-1">Notes &amp; writing</span>
+        </div>
+
+        <p class="text-[13px] uppercase tracking-[0.14em] text-ink/40 mb-3">Filter</p>
+        <nav id="tag-filter" class="space-y-[6px] text-[13.5px]">
+          <button type="button" data-tag="All" class="tag-link is-active block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">All</button>
+          <button type="button" data-tag="Math & CS" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Math &amp; CS</button>
+          <button type="button" data-tag="Readings" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Readings</button>
+          <button type="button" data-tag="Table Tennis" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Table Tennis</button>
+        </nav>
+      </div>
+
+      <div class="hidden md:flex items-center gap-4 text-[12px] text-ink/40 mt-14">
+        <a href="https://github.com/Jasper-Gao" target="_blank" rel="noopener" class="hover:text-ink transition-colors">GitHub</a>
+        <span>&middot;</span>
+        <a href="mailto:bg2941@nyu.edu" class="hover:text-ink transition-colors">Email</a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="md:w-3/4 flex-1">
+      <div class="max-w-read mx-auto px-8 py-16 md:py-24">
+
+        <!-- LIST VIEW -->
+        <section id="list-view">
+          <h1 class="font-serif text-[28px] md:text-[32px] leading-snug mb-2">Writing</h1>
+          <p id="list-status" class="text-[13.5px] text-ink/45 mb-12">Loading posts&hellip;</p>
+
+          <div id="post-list" class="space-y-10"></div>
+
+          <p id="empty-state" class="hidden text-[14.5px] text-ink/50 italic">No posts in this category yet.</p>
+        </section>
+
+        <!-- DETAIL VIEW -->
+        <section id="detail-view" class="hidden">
+          <button type="button" id="back-to-list" class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mb-10">
+            <span aria-hidden="true">&larr;</span> Back to Posts
+          </button>
+
+          <p id="detail-tag" class="text-[12px] uppercase tracking-[0.14em] text-ink/40 mb-3"></p>
+          <h1 id="detail-title" class="font-serif text-[26px] md:text-[30px] leading-snug mb-2"></h1>
+          <p id="detail-date" class="text-[13.5px] text-ink/45 mb-10"></p>
+
+          <article id="detail-body" class="article-body text-[15.5px] leading-[1.85] text-ink/85"></article>
+
+          <button type="button" id="back-to-list-bottom" class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mt-14 pt-8 border-t border-rule">
+            <span aria-hidden="true">&larr;</span> Back to Posts
+          </button>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+<script defer src="js/blog.js"></script>
+</body>
+</html>

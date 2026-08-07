@@ -45,6 +45,114 @@ h1, h2, h3 {
   opacity: 0.5;
 }
 
+.tag-link {
+  position: relative;
+  padding-left: 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.tag-link.is-active {
+  color: #1A1A1A;
+  padding-left: 6px;
+}
+
+.tag-link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #1A1A1A;
+  opacity: 0.5;
+}
+
+/* ============================================
+   Rendered markdown article body (blog.html)
+   ============================================ */
+
+.article-body h1,
+.article-body h2,
+.article-body h3 {
+  font-family: '"Source Serif 4"', Georgia, serif;
+  color: #1A1A1A;
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+.article-body h1 { font-size: 22px; }
+.article-body h2 { font-size: 19px; }
+.article-body h3 { font-size: 16.5px; }
+
+.article-body p {
+  margin-bottom: 1.3em;
+}
+
+.article-body a {
+  color: #1A1A1A;
+  text-decoration: underline;
+  text-decoration-color: #E4DFD5;
+  text-underline-offset: 3px;
+}
+
+.article-body a:hover {
+  text-decoration-color: #1A1A1A;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.3em 1.4em;
+}
+
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+
+.article-body li {
+  margin-bottom: 0.4em;
+}
+
+.article-body blockquote {
+  border-left: 2px solid #E4DFD5;
+  padding-left: 1.1em;
+  margin: 1.5em 0;
+  color: rgba(26, 26, 26, 0.6);
+  font-style: italic;
+}
+
+.article-body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+.article-body hr {
+  border: none;
+  border-top: 1px solid #E4DFD5;
+  margin: 2.5em 0;
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 14px;
+}
+
+.article-body th,
+.article-body td {
+  border: 1px solid #E4DFD5;
+  padding: 0.5em 0.8em;
+  text-align: left;
+}
+
+.article-body th {
+  background-color: #F5F2EC;
+  font-weight: 500;
+}
+
 /* ============================================
    Selection color
    ============================================ */
