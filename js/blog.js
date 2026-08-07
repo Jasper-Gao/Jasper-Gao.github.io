@@ -6,7 +6,7 @@
    controls fallback order before sorting by date.
    ================================================================== */
 const POST_FILES = [
-  'posts/demo.md',
+  'posts/demo.md', 
 ];
 
 /* Allowed sidebar tags, in display order */
