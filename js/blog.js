@@ -6,7 +6,7 @@
    controls fallback order before sorting by date.
    ================================================================== */
 const POST_FILES = [
-  'posts/demo.md',
+  'posts/combinatorial-analysis.md',
 ];
 
 /* Allowed sidebar tags, in display order */
@@ -28,16 +28,7 @@ function getScriptBase() {
 const SITE_ROOT = getScriptBase();
 
 function resolvePostUrl(file) {
-  // Already absolute (http(s):// or leading /)
-  if (/^(https?:)?\/\//i.test(file) || file.startsWith('/')) {
-    return file;
-  }
-  // Build an absolute URL based on the site root found above
-  if (SITE_ROOT) {
-    return `${SITE_ROOT.replace(/\/$/, '')}/${file}`;
-  }
-  // Fallback: keep original relative URL
-  return file;
+  return file.startsWith('./') ? file : `./${file}`;
 }
 
 let POSTS = [];        // parsed post objects: { title, date, tag, summary, body, file }
