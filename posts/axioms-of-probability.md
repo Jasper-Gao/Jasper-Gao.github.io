@@ -1,3 +1,9 @@
+---
+title: "Axioms of Probability"
+date: "2026-09-4"
+tag: "Math & CS"
+summary: "Chapter Two Notes of MA-UY 3514 Honors Theory of Probability"
+---
 # 概率论与数理统计
 
 概率论的严密体系建立在公理化基础之上。本章首先介绍了样本空间与事件的基本概念，进而通过概率公理（Axioms of Probability）以及一系列由其推导出的性质，阐述了概率在等可能样本空间（Equally Likely Outcomes）及连续集合函数下的运算规律。
