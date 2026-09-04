@@ -7,6 +7,7 @@
    ================================================================== */
 const POST_FILES = [
   'posts/combinatorial-analysis.md',
+  'posts/axioms-of-probability.md',
 ];
 
 /* Allowed sidebar tags, in display order */
