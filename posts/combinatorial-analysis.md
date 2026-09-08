@@ -1,6 +1,6 @@
 ---
 title: "Combinatorial Analysis"
-date: "2026-08-7"
+date: "2026-08-07"
 tag: "Math & CS"
 summary: "Chapter One Notes of MA-UY 3514 Honors Theory of Probability"
 ---
