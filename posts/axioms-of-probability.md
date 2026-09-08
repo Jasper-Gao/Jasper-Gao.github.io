@@ -62,9 +62,8 @@ summary: "Chapter Two Notes of MA-UY 3514 Honors Theory of Probability"
 
 **证明** 令 $\mathcal{C}$ 表示所有开区间。由于 $\mathbf{R}$ 中的每个开集都是开区间的可数并，我们有 $\sigma(\mathcal{C}) = \mathbf{R}$ 的博雷尔 $\sigma$-代数。
 
-令 $\mathcal{D}$ 表示所有形如 $(-\infty, a]$ 的区间，其中 $a \in \mathbf{Q}$。令 $(a, b) \in \mathcal{C}$，并令 $(a_n)_{n \ge 1}$ 为严格递减收敛到 $a$ 的有理数序列，$(b_n)_{n \ge 1}$ 为严格递增收敛到 $b$ 的有理数序列。则：
+令 $\mathcal{D}$ 表示所有形如 $(-\infty, a]$ 的区间，其中 $a \in \mathbf{Q}$。令 $(a, b) \in \mathcal{C}$，并令 $(a\_n)\_{n \ge 1}$ 为严格递减收敛到 $a$ 的有理数序列，$(b\_n)\_{n \ge 1}$ 为严格递增收敛到 $b$ 的有理数序列。则：
 
-  
 
 $$(a, b) = \bigcup_{n=1}^\infty (a_n, b_n] = \bigcup_{n=1}^\infty \left((-\infty, b_n] \cap (-\infty, a_n]^c\right)$$
 
@@ -90,8 +89,7 @@ $$\mathcal{B} = \sigma(\mathcal{C}) \subset \sigma(\mathcal{D}) \subset \mathcal
     
       
     
-2. _对于 $\mathcal{A}$ 中任意两两不交的可数元素序列 $(A_n)_{n \ge 1}$（即当 $n \neq m$ 时 $A_n \cap A_m = \emptyset$），有：_
-    
+2. 对于 $\mathcal{A}$ 中任意两两不交的可数元素序列 $(A_n)_{n \ge 1}$（即当 $n \neq m$ 时 $A_n \cap A_m = \emptyset$），有：    
       
     
     $$P\left(\bigcup_{n=1}^\infty A_n\right) = \sum_{n=1}^\infty P(A_n)$$
@@ -209,8 +207,7 @@ $$1_A(\omega) = \begin{cases} 1 & \text{若 } \omega \in A, \\ 0 & \text{若 } \
 
   
 
-**定理 2.4** _令 $P$ 为概率测度，且令 $A_n$ 为 $\mathcal{A}$ 中收敛到 $A$ 的事件序列。则 $A \in \mathcal{A}$ 且 $\lim_{n \to \infty} P(A_n) = P(A)$。_
-
+**定理 2.4** *令 $P$ 为概率测度，且令 $A_n$ 为 $\mathcal{A}$ 中收敛到 $A$ 的事件序列。则 $A \in \mathcal{A}$ 且 $\lim_{n \to \infty} P(A_n) = P(A)$。*
   
 
 **证明** 首先我们定义：
@@ -390,23 +387,14 @@ $$ \lim_{n \to \infty} P(E_n) = P(E) = P\left(\bigcap_{n=1}^\infty E_n\right) $$
 ## 6. 核心公式
 
 | 定理/公理 | 条件 / 描述 | 数学表达式 |
-
 | :--- | :--- | :--- |
-
 | 公理 1 (非负性) | 任意事件 $E$ | $0 \le P(E) \le 1$ |
-
 | 公理 2 (规范性) | 全集 $S$ | $P(S) = 1$ |
-
 | 公理 3 (可加性) | $E_i$ 两两互斥 ($E_i E_j = \emptyset$) | $P\left(\bigcup_{i=1}^\infty E_i\right) = \sum_{i=1}^\infty P(E_i)$ |
-
 | 补集公式 | 事件 $E$ 的对立事件 | $P(E^c) = 1 - P(E)$ |
-
 | 加法原理 (容斥) | 任意两事件 $E, F$ | $P(E \cup F) = P(E) + P(F) - P(EF)$ |
-
 | 布尔不等式 | 任意事件序列 $E_1, \dots, E_n$ | $P\left(\bigcup_{i=1}^n E_i\right) \le \sum_{i=1}^n P(E_i)$ |
-
 | 古典概型公式 | 有限样本空间，各结果等可能 | $P(E) = \frac{\|E\|}{\|S\|}$ |
-
 | 连续性 (递增极限) | $E_1 \subset E_2 \subset E_3 \subset \dots$ | $\lim_{n \to \infty} P(E_n) = P\left(\bigcup_{n=1}^\infty E_n\right)$ |
 
   
