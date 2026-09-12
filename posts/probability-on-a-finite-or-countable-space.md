@@ -2,7 +2,7 @@
 title: "Probability on a Finite or Countable Space"
 date: "2026-09-12"
 tag: "Math & CS"
-summary: "Chapter One Notes of MA-UY 3514 Honors Theory of Probability"
+summary: "Chapter Four Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 # 4 有限或可数空间上的概率
 
