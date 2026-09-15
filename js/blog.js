@@ -9,6 +9,7 @@ const POST_FILES = [
   'posts/combinatorial-analysis.md',
   'posts/axioms-of-probability.md',
   'posts/probability-on-a-finite-or-countable-space.md',
+  'posts/conditional-probability-and-independence.md',
 ];
 
 /* Allowed sidebar tags, in display order */

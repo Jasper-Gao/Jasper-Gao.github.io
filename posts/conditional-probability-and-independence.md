@@ -4,6 +4,7 @@ date: "2026-09-15"
 tag: "Math & CS"
 summary: "Chapter Three Notes of MA-UY 3514 Honors Theory of Probability"
 ---
+
 **# 3 条件概率与独立性**
 
 设 $A$ 和 $B$ 是定义在一个概率空间上的两个事件。令 $f\\\_n(A)$ 表示事件 $A$ 发生的次数除以 $n$。直观上，当 $n$ 越来越大时，$f\\\_n(A)$ 应该越来越接近 $P(A)$。非正式地说，我们应该有
