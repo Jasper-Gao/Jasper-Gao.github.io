@@ -35,7 +35,7 @@ $$P\left(\bigcap_{i\in J}A_i\right)=\prod_{i\in J}P(A_i).$$
 
 事件族 $(A_i)_{i\in I}$ 也常被称为**相互独立的（mutually independent）**。
 
-**警告：** 如果事件 $(A_i)_{i\in I}$ 是相互独立的，那么它们一定是两两独立的；但反过来并不成立。如果对于所有 $i,j$ 且 $i\neq j$，$A_i$ 和 $A_j$ 都相互独立，那么称 $(A_i)_{i\in I}$ 是**两两独立的（pairwise independent）**。
+**警告：** 如果事件 $(A_i)_{i \in I}$ 是相互独立的，那么它们一定是两两独立的；但反过来并不成立。如果对于所有 $i,j$ 且 $i \neq j$，$A_i$ 和 $A_j$ 都相互独立，那么称 $(A_i)_{i \in I}$ 是**两两独立的（pairwise independent）**。
 
 **定理 3.1.** 如果 $A$ 和 $B$ 独立，那么 $A$ 与 $B^c$、$A^c$ 与 $B$、以及 $A^c$ 与 $B^c$ 也都独立。
 
