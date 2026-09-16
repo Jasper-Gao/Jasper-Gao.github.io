@@ -226,9 +226,7 @@ $$
 
 那么 $X=Y_1+\cdots+Y_n$ 服从二项分布（见第四章）。也就是说，二项随机变量是 $n$ 个伯努利随机变量之和。因此
 
-$$
-E\{X\}=E\left\{\sum_{i=1}^nY_i\right\}=\sum_{i=1}^nE\{Y_i\}=\sum_{i=1}^np=np.
-$$
+$$E[X]=E\left[\sum_{i=1}^{n}Y_i\right]=\sum_{i=1}^{n}E[Y_i]=\sum_{i=1}^{n}p=np.$$
 
 也可以直接利用定义、通过组合计算 $E\{X\}$：
 
