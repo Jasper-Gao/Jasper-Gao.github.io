@@ -10,6 +10,7 @@ const POST_FILES = [
   'posts/axioms-of-probability.md',
   'posts/probability-on-a-finite-or-countable-space.md',
   'posts/conditional-probability-and-independence.md',
+  '/posts/random-variable-on-a-countable-space.md',
 ];
 
 /* Allowed sidebar tags, in display order */
