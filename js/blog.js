@@ -98,10 +98,14 @@ async function loadPosts() {
   loaded.sort((a, b) => new Date(b.date) - new Date(a.date));
   POSTS = loaded;
 
-  if (failed.length && !loaded.length) {
-    statusEl.textContent =
-      'Could not load posts. If you\u2019re viewing this file directly (file://), ' +
-      'serve the site over a local server so fetch() can read the posts/ folder.';
+  if (failed.length) {
+    if (location.protocol === 'file:') {
+      statusEl.textContent = 'Could not load posts from local files. Serve this folder over HTTP.';
+    } else {
+      statusEl.textContent =
+        `${loaded.length} post${loaded.length === 1 ? '' : 's'} loaded; ` +
+        `${failed.length} failed (${failed.join(', ')}).`;
+    }
   } else {
     statusEl.textContent = `${loaded.length} post${loaded.length === 1 ? '' : 's'}`;
   }
