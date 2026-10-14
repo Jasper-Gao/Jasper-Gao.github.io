@@ -12,6 +12,7 @@ const POST_FILES = [
   'posts/conditional-probability-and-independence.md',
   'posts/random-variable-on-a-countable-space.md',
   'posts/random-variables.md',
+  'posts/integration-with-respect-to-a-probability-measure.md',
 ];
 
 /* Allowed sidebar tags, in display order */
