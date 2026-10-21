@@ -13,6 +13,7 @@ const POST_FILES = [
   'posts/random-variable-on-a-countable-space.md',
   'posts/random-variables.md',
   'posts/integration-with-respect-to-a-probability-measure.md',
+  'posts/jointly-distributed-random-variables.md',
 ];
 
 /* Allowed sidebar tags, in display order */
@@ -39,6 +40,7 @@ function resolvePostUrl(file) {
 
 let POSTS = [];        // parsed post objects: { title, date, tag, summary, body, file }
 let activeTag = 'All';
+let mathMarkdown;
 
 /* ------------------------------------------------------------------
    Front matter parsing
@@ -79,6 +81,8 @@ async function loadPosts() {
         date: meta.date || '',
         tag: meta.tag || 'Math & CS',
         summary: meta.summary || '',
+        compact: meta.compact === true,
+        math: meta.math === true,
         body: content.trim(),
       };
     })
@@ -164,7 +168,9 @@ function showDetail(file) {
   document.getElementById('detail-tag').textContent = post.tag;
   document.getElementById('detail-title').textContent = post.title;
   document.getElementById('detail-date').textContent = formatDate(post.date);
-  document.getElementById('detail-body').innerHTML = marked.parse(post.body);
+  const bodyEl = document.getElementById('detail-body');
+  bodyEl.classList.toggle('compact-notes', post.compact);
+  bodyEl.innerHTML = (post.math ? mathMarkdown : marked).parse(post.body);
 
   document.getElementById('list-view').classList.add('hidden');
   document.getElementById('detail-view').classList.remove('hidden');
@@ -191,6 +197,50 @@ function setActiveTag(tag) {
     btn.classList.toggle('is-active', btn.dataset.tag === tag);
   });
   renderList();
+}
+
+/* ------------------------------------------------------------------
+   Preserve TeX before Markdown consumes backslashes and underscores.
+   Posts opt in with math: true; legacy posts keep their existing escaping.
+   Tokenizers leave code spans and fenced code blocks to marked itself.
+   KaTeX auto-render processes the escaped source after HTML is inserted.
+   ------------------------------------------------------------------ */
+function configureMarkdownMath() {
+  mathMarkdown = new marked.Marked({
+    extensions: [
+      {
+        name: 'mathBlock',
+        level: 'block',
+        start(src) { return src.search(/(?:^|\n) {0,3}(?:\$\$|\\\[)/); },
+        tokenizer(src) {
+          const match = /^ {0,3}\$\$([\s\S]+?)\$\$[ \t]*(?:\n|$)/.exec(src)
+            || /^ {0,3}\\\[([\s\S]+?)\\\][ \t]*(?:\n|$)/.exec(src);
+          if (match) return { type: 'mathBlock', raw: match[0], text: match[1] };
+        },
+        renderer(token) {
+          return `<div class="math-block">$$${escapeHtml(token.text)}$$</div>\n`;
+        },
+      },
+      {
+        name: 'mathInline',
+        level: 'inline',
+        start(src) { return src.search(/\$|\\\(/); },
+        tokenizer(src) {
+          const display = /^\$\$([\s\S]+?)\$\$/.exec(src);
+          const inline = /^\$(?!\$)((?:\\[\s\S]|[^\\$\n])+?)\$(?!\$)/.exec(src)
+            || /^\\\(([\s\S]+?)\\\)/.exec(src);
+          const match = display || inline;
+          if (match) return {
+            type: 'mathInline', raw: match[0], text: match[1], display: Boolean(display),
+          };
+        },
+        renderer(token) {
+          const delimiter = token.display ? '$$' : '$';
+          return `<span class="math-source">${delimiter}${escapeHtml(token.text)}${delimiter}</span>`;
+        },
+      },
+    ],
+  });
 }
 
 /* ------------------------------------------------------------------
@@ -227,7 +277,12 @@ function highlightCode() {
    ------------------------------------------------------------------ */
 function formatDate(dateStr) {
   if (!dateStr) return '';
-  const d = new Date(dateStr);
+  // A calendar date has no timezone. Parsing it as UTC shifts it back a day
+  // for readers in timezones west of UTC.
+  const dateOnly = typeof dateStr === 'string' && /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+  const d = dateOnly
+    ? new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]))
+    : new Date(dateStr);
   if (isNaN(d)) return dateStr;
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
@@ -268,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initReady(async () => {
+    configureMarkdownMath();
     await loadPosts();
     // Deep-link support: #posts/demo.md opens directly to that post
     if (location.hash) {

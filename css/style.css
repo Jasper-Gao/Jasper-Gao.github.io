@@ -153,6 +153,26 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
+/* Long mathematical notes can opt in through compact: true. */
+main { min-width: 0; }
+
+.article-body.compact-notes {
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.compact-notes h2 { margin-top: 1.65em; margin-bottom: 0.55em; }
+.compact-notes h3 { margin-top: 1.25em; margin-bottom: 0.5em; }
+.compact-notes p { margin-bottom: 0.8em; }
+.compact-notes ul,
+.compact-notes ol { margin-bottom: 0.8em; }
+.compact-notes li { margin-bottom: 0.25em; }
+.compact-notes table { display: block; overflow-x: auto; margin: 1em 0; }
+.compact-notes th,
+.compact-notes td { padding: 0.4em 0.6em; }
+.compact-notes .katex-display { margin: 0.8em 0 !important; }
+.math-block { min-width: 0; }
+
 /* ============================================
    Selection color
    ============================================ */
