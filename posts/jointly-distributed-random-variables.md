@@ -1,16 +1,11 @@
 ---
-title: "联合分布随机变量：联合、条件、卷积与变量变换"
+title: "Jointly Distributed Random Variables"
 date: "2026-10-20"
 tag: "Math & CS"
 compact: true
 math: true
-summary: "Ross《A First Course in Probability》第六章笔记：联合与边缘分布、独立性、卷积、条件分布、次序统计量、Jacobian 变换及可交换性，附关键证明与典型例子。"
+summary: "Ross Chapter Six Notes of MA-UY 3514 Honors Theory of Probability"
 ---
-
-本文整理 Sheldon Ross, *A First Course in Probability*, 10th edition，第六章 **Jointly Distributed Random Variables**（正文页码 237–290；所用 PDF 第 380–453 页）。沿用原书 6.1–6.8 的结构，以定义、核心结论和推导为主，例子作适当取舍。下文的定理编号仅用于本文。
-
-本章的主线是：**联合分布描述多个变量如何一起变化；边缘化消去变量；条件化固定信息；变量变换把已知分布转化为新分布。** 独立性使其中许多计算可以分解。
-
 ## 6.1 联合分布函数与边缘分布
 
 ### 联合 CDF：最一般的描述

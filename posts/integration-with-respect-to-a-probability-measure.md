@@ -2,7 +2,7 @@
 title: "Integration with Respect to a Probability Measure"
 date: "2026-10-13"
 tag: "Math & CS"
-summary: "关于概率测度积分、期望及其基本性质的第 9 章笔记"
+summary: "Chapter Nine Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 
 # 9 关于概率测度的积分
@@ -474,7 +474,3 @@ $$
    $$
 
    因为对于所有 $x\\geq0$，都有 $\\frac{x}{1+x^2}\\geq0$；而对于 $x>1$，有 $\\frac{x}{1+x^2}\\geq\\frac1{2x}$。$E\\{X^-\\}=\\infty$ 的证明类似。
-
----
-
-注：原文中“positive”在本章指非负。以上修正了几处明显的原文笔误：定理 9.1（e）的证明不应声称 $\\widehat X\_n\\in\\mathcal{L}^1$；定理 9.2 的证明中，$E\\{S\\}<\\infty$ 仅在（b）的假设下成立；定理 9.3 证明中的判别式不应带平方根。另外，切比雪夫不等式中的阈值应满足 $a>0$。
