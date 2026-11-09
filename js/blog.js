@@ -15,6 +15,7 @@ const POST_FILES = [
   'posts/integration-with-respect-to-a-probability-measure.md',
   'posts/jointly-distributed-random-variables.md',
   'posts/convergence-of-random-variables.md',
+  'posts/weak-convergence.md',
 ];
 
 /* Allowed sidebar tags, in display order */
