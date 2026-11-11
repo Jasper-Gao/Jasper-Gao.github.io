@@ -16,6 +16,7 @@ const POST_FILES = [
   'posts/jointly-distributed-random-variables.md',
   'posts/convergence-of-random-variables.md',
   'posts/weak-convergence.md',
+  'posts/markov-chains.md',
 ];
 
 /* Allowed sidebar tags, in display order */
