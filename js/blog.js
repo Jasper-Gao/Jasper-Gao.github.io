@@ -17,6 +17,7 @@ const POST_FILES = [
   'posts/convergence-of-random-variables.md',
   'posts/weak-convergence.md',
   'posts/markov-chains.md',
+  'posts/characteristic-function.md',
 ];
 
 /* Allowed sidebar tags, in display order */
