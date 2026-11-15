@@ -18,6 +18,7 @@ const POST_FILES = [
   'posts/weak-convergence.md',
   'posts/markov-chains.md',
   'posts/characteristic-function.md',
+  'posts/monte-carlo-methods.md',
 ];
 
 /* Allowed sidebar tags, in display order */
