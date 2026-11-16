@@ -4,8 +4,12 @@
    Static sites can't list a folder's contents from client-side JS,
    so new posts must be added to this array by filename. Order here
    controls fallback order before sorting by date.
+
+   Start each Readings post with the original source link and citation.
    ================================================================== */
 const POST_FILES = [
+  'posts/good-enough-practices-in-scientific-computing.md',
+  'posts/cookiecutter-data-science-opinions.md',
   'posts/combinatorial-analysis.md',
   'posts/axioms-of-probability.md',
   'posts/probability-on-a-finite-or-countable-space.md',
