@@ -25,6 +25,7 @@ const POST_FILES = [
   'posts/monte-carlo-methods.md',
   'posts/the-laws-of-large-numbers.md',
   'posts/the-central-limit-theorem.md',
+  'posts/martingales.md',
 ];
 
 /* Allowed sidebar tags, in display order */
