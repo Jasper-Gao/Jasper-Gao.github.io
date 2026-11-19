@@ -1,7 +1,7 @@
 ---
 title: "Markov Chains"
 date: "2026-11-11"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Section 9.2 Notes of MA-UY 3514 Honors Theory of Probability"

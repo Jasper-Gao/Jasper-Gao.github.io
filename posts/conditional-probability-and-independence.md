@@ -1,7 +1,7 @@
 ---
 title: "Conditional Probability and Independence"
 date: "2026-09-15"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter Three Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 

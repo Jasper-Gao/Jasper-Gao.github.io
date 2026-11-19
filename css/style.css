@@ -69,6 +69,50 @@ h1, h2, h3 {
   opacity: 0.5;
 }
 
+.probability-notes {
+  margin-bottom: 3rem;
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid #E4DFD5;
+  border-bottom: 1px solid #E4DFD5;
+}
+
+.probability-notes h2,
+.probability-topics h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+}
+
+.probability-notes h2 { font-size: 1.5rem; }
+
+.probability-notes > p {
+  margin: 0.5rem 0 1.5rem;
+  line-height: 1.65;
+}
+
+.probability-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.probability-topics h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.probability-topics li + li { margin-top: 0.35rem; }
+
+.probability-topics a {
+  display: inline-block;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: #9E988E;
+  text-underline-offset: 0.18em;
+}
+
+.probability-topics a:hover { text-decoration-color: currentColor; }
+
 /* ============================================
    Rendered markdown article body (blog.html)
    ============================================ */

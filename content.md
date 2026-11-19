@@ -1,21 +1,19 @@
 about
-I am an incoming sophomore student at Tandon School of Engineering, New York University. I studied at Beijing 101 High School prior to college. My interest lies at intersection of applied mathematics and machine learning. 
+I am an incoming sophomore student at Tandon School of Engineering, New York University. I studied at Beijing 101 High School prior to college. 
 
-interests
-artificial intelligence
+academic interests
+probability theory
+stochastic processes
 mathematic modeling
-computer vision & quantum computing
-
-beyond academics
-chess
-table tennis
+mechine learning
 
 education
 2025.9 - Present: New York University
 Tandon School of Engineering
-incoming mathematics & computer science double major
+mathematics & computer science double major
+
 CGPA: 3.948/4.0. (major CGPA: 4.0/4.0)
-core courses: linear algebra; multivariable calculus; discrete math; honors probability; intro to python; data structure & algos; object oriented programing(C++). 
+core courses: linear algebra; multivariable calculus; discrete math; honors theory of probability; applied statistics; honors real analysis; intro to python; data structure & algos; object oriented programing(C++); computer architecture and organizations; database basics;
 
 2022.9 - 2025.7 Beijing 101 High School
 International Baccalaureate Diploma Programme 
@@ -37,10 +35,9 @@ Feb. 2024 - Mar. 2024: International Mathematical Modeling Challenge (IMMC) Repo
 Formulated a non-linear mathematical model to evaluate and optimize regional strategies for reducing carbon dioxide (CO2) emissions.
 
 skills
-C/C++; Python (NumPy, Pandas, Scikit-learn, Matplotlib)
-Key Domains: ML/DL; Quantum Neural Networks (QNN); Mathematical Modeling; Probability Theory
+C/C++; Python; Git; Linux
 
-Exploring: Computer Architecture, Compiler, Operating Systems, Stochastic Processes
+Exploring: Stochastic Processes; Monte Carlo Simulation
 
 contacts
 email:

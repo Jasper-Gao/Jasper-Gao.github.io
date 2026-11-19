@@ -1,7 +1,7 @@
 ---
 title: "Characteristic Function"
 date: "2026-11-13"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Chapters 13 and 19 Notes of MA-UY 3514 Honors Theory of Probability"

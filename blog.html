@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog · Jasper Gao</title>
-<meta name="description" content="Notes on mathematics, computer science, readings, and table tennis — Jasper Gao.">
+<meta name="description" content="Jasper Gao’s notes on probability theory, mathematics, and scientific computing.">
 
 <!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -67,11 +67,10 @@
         </div>
 
         <p class="text-[13px] uppercase tracking-[0.14em] text-ink/40 mb-3">Filter</p>
-        <nav id="tag-filter" class="space-y-[6px] text-[13.5px]">
-          <button type="button" data-tag="All" class="tag-link is-active block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">All</button>
-          <button type="button" data-tag="Math & CS" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Math &amp; CS</button>
-          <button type="button" data-tag="Readings" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Readings</button>
-          <button type="button" data-tag="Table Tennis" class="tag-link block w-full text-left py-1 text-ink/55 hover:text-ink transition-colors">Table Tennis</button>
+        <nav id="tag-filter" class="space-y-[6px] text-[13.5px]" aria-label="Blog categories">
+          <a href="#mathematics" data-tag="Mathematics" aria-current="true" class="tag-link is-active block py-1 text-ink/55 hover:text-ink transition-colors">Mathematics</a>
+          <a href="#computer-science" data-tag="Computer Science" class="tag-link block py-1 text-ink/55 hover:text-ink transition-colors">Computer Science</a>
+          <a href="#readings" data-tag="Readings" class="tag-link block py-1 text-ink/55 hover:text-ink transition-colors">Readings</a>
         </nav>
       </div>
 
@@ -88,29 +87,71 @@
 
         <!-- LIST VIEW -->
         <section id="list-view">
-          <h1 class="font-serif text-[28px] md:text-[32px] leading-snug mb-2">Writing</h1>
-          <p id="list-status" class="text-[13.5px] text-ink/45 mb-12">Loading posts&hellip;</p>
+          <h1 class="font-serif text-[28px] md:text-[32px] leading-snug mb-6">Writing</h1>
 
-          <div id="post-list" class="space-y-10"></div>
+          <nav id="probability-notes" class="probability-notes" aria-labelledby="probability-title">
+            <h2 id="probability-title">Probability Notes</h2>
+            <p>A reading guide to my notes from Honors Theory of Probability (MA-UY 3514), with a companion note on Monte Carlo methods.</p>
 
-          <p id="empty-state" class="hidden text-[14.5px] text-ink/50 italic">No posts in this category yet.</p>
+            <div class="probability-topics">
+              <section>
+                <h3>Foundations</h3>
+                <ul>
+                  <li><a href="#posts%2Fcombinatorial-analysis.md">Combinatorial Analysis</a></li>
+                  <li><a href="#posts%2Faxioms-of-probability.md">Axioms of Probability</a></li>
+                  <li><a href="#posts%2Fprobability-on-a-finite-or-countable-space.md">Probability on a Finite or Countable Space</a></li>
+                  <li><a href="#posts%2Fconditional-probability-and-independence.md">Conditional Probability and Independence</a></li>
+                </ul>
+              </section>
+              <section>
+                <h3>Random Variables and Expectation</h3>
+                <ul>
+                  <li><a href="#posts%2Frandom-variable-on-a-countable-space.md">Random Variable on a Countable Space</a></li>
+                  <li><a href="#posts%2Frandom-variables.md">Random Variables</a></li>
+                  <li><a href="#posts%2Fintegration-with-respect-to-a-probability-measure.md">Integration with Respect to a Probability Measure</a></li>
+                  <li><a href="#posts%2Fjointly-distributed-random-variables.md">Jointly Distributed Random Variables</a></li>
+                </ul>
+              </section>
+              <section>
+                <h3>Convergence and Limit Theorems</h3>
+                <ul>
+                  <li><a href="#posts%2Fconvergence-of-random-variables.md">Convergence of Random Variables</a></li>
+                  <li><a href="#posts%2Fweak-convergence.md">Weak Convergence</a></li>
+                  <li><a href="#posts%2Fcharacteristic-function.md">Characteristic Function</a></li>
+                  <li><a href="#posts%2Fthe-laws-of-large-numbers.md">The Laws of Large Numbers</a></li>
+                  <li><a href="#posts%2Fthe-central-limit-theorem.md">The Central Limit Theorem</a></li>
+                </ul>
+              </section>
+              <section>
+                <h3>Stochastic Processes and Simulation</h3>
+                <ul>
+                  <li><a href="#posts%2Fmarkov-chains.md">Markov Chains</a></li>
+                  <li><a href="#posts%2Fmartingales.md">Martingales</a></li>
+                  <li><a href="#posts%2Fmonte-carlo-methods.md">Monte Carlo Methods</a></li>
+                </ul>
+              </section>
+            </div>
+          </nav>
+
+          <section id="post-archive" aria-labelledby="archive-title">
+            <h2 id="archive-title" class="font-serif text-[22px] mb-2" tabindex="-1">Posts by Date</h2>
+            <p id="list-status" class="text-[13.5px] text-ink/45 mb-10" role="status">Loading posts&hellip;</p>
+            <div id="post-list" class="space-y-10"></div>
+            <p id="empty-state" class="hidden text-[14.5px] text-ink/50 italic">No posts in this category yet.</p>
+          </section>
         </section>
 
         <!-- DETAIL VIEW -->
         <section id="detail-view" class="hidden">
-          <button type="button" id="back-to-list" class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mb-10">
-            <span aria-hidden="true">&larr;</span> Back to Posts
-          </button>
+          <a href="#post-archive" data-back-to-posts class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mb-10">Back to Posts</a>
 
           <p id="detail-tag" class="text-[12px] uppercase tracking-[0.14em] text-ink/40 mb-3"></p>
-          <h1 id="detail-title" class="font-serif text-[26px] md:text-[30px] leading-snug mb-2"></h1>
+          <h1 id="detail-title" class="font-serif text-[26px] md:text-[30px] leading-snug mb-2" tabindex="-1"></h1>
           <p id="detail-date" class="text-[13.5px] text-ink/45 mb-10"></p>
 
           <article id="detail-body" class="article-body text-[15.5px] leading-[1.85] text-ink/85"></article>
 
-          <button type="button" id="back-to-list-bottom" class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mt-14 pt-8 border-t border-rule">
-            <span aria-hidden="true">&larr;</span> Back to Posts
-          </button>
+          <a href="#post-archive" data-back-to-posts class="inline-flex items-center gap-1.5 text-[13px] text-ink/55 hover:text-ink transition-colors mt-14 pt-8 border-t border-rule">Back to Posts</a>
         </section>
 
       </div>

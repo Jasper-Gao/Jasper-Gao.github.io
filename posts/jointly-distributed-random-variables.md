@@ -1,7 +1,7 @@
 ---
 title: "Jointly Distributed Random Variables"
 date: "2026-10-20"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Ross Chapter Six Notes of MA-UY 3514 Honors Theory of Probability"

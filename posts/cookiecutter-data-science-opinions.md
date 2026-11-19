@@ -99,7 +99,7 @@ from {{ cookiecutter.module_name }}.data import make_dataset
 
 在项目根目录新建 `.env` 文件。模板通过 `.gitignore` 排除这个文件，因此它不会进入版本库。下面的值都是示例。
 
-```dotenv
+```ini
 # .env 文件示例
 DATABASE_URL=postgres://username:password@localhost:5432/dbname
 AWS_ACCESS_KEY=myaccesskey

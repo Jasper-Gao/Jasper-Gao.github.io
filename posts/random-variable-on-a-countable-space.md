@@ -1,7 +1,7 @@
 ---
 title: "Random Variable on a Countable Space"
 date: "2026-09-16"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter Five Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 

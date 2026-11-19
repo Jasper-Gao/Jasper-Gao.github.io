@@ -1,7 +1,7 @@
 ---
 title: "Integration with Respect to a Probability Measure"
 date: "2026-10-13"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter Nine Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 

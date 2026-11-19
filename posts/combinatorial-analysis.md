@@ -1,7 +1,7 @@
 ---
 title: "Combinatorial Analysis"
 date: "2026-08-07"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter One Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 组合分析是概率学的基础。在很多简单离散的概率问题里，某件事件发生的概率可通过计算该事件数量与总样本数量之比得到。因此，这类问题的重点在于讨论不同情形下，总样本数与事件样本数是如何被计算的。

@@ -1,7 +1,7 @@
 ---
 title: "The Central Limit Theorem"
 date: "2026-11-17"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Chapter Twenty-One Notes of MA-UY 3514 Honors Theory of Probability"

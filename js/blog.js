@@ -28,8 +28,8 @@ const POST_FILES = [
   'posts/martingales.md',
 ];
 
-/* Allowed sidebar tags, in display order */
-const TAGS = ['All', 'Math & CS', 'Readings', 'Table Tennis'];
+const TAG_LINKS = [...document.querySelectorAll('#tag-filter [data-tag]')];
+const DEFAULT_TAG_LINK = TAG_LINKS.find((link) => link.getAttribute('aria-current') === 'true');
 
 /* ------------------------------------------------------------------
    Site root inference
@@ -51,7 +51,6 @@ function resolvePostUrl(file) {
 }
 
 let POSTS = [];        // parsed post objects: { title, date, tag, summary, body, file }
-let activeTag = 'All';
 let mathMarkdown;
 
 /* ------------------------------------------------------------------
@@ -79,7 +78,6 @@ function splitFrontMatter(raw) {
    Load + parse all posts in the manifest
    ------------------------------------------------------------------ */
 async function loadPosts() {
-  const statusEl = document.getElementById('list-status');
   const results = await Promise.allSettled(
     POST_FILES.map(async (file) => {
       const url = resolvePostUrl(file);
@@ -87,11 +85,12 @@ async function loadPosts() {
       if (!res.ok) throw new Error(`Could not load ${file} (${res.status}) from ${url}`);
       const raw = await res.text();
       const { meta, content } = splitFrontMatter(raw);
+      const tagLink = TAG_LINKS.find((link) => link.dataset.tag === meta.tag) || DEFAULT_TAG_LINK;
       return {
         file,
         title: meta.title || file,
         date: meta.date || '',
-        tag: meta.tag || 'Math & CS',
+        tag: tagLink.dataset.tag,
         summary: meta.summary || '',
         compact: meta.compact === true,
         math: meta.math === true,
@@ -101,12 +100,10 @@ async function loadPosts() {
   );
 
   const loaded = [];
-  const failed = [];
-  results.forEach((r, i) => {
+  results.forEach((r) => {
     if (r.status === 'fulfilled') {
       loaded.push(r.value);
     } else {
-      failed.push(POST_FILES[i]);
       console.error(r.reason);
     }
   });
@@ -114,32 +111,25 @@ async function loadPosts() {
   // Newest first
   loaded.sort((a, b) => new Date(b.date) - new Date(a.date));
   POSTS = loaded;
-
-  if (failed.length) {
-    if (location.protocol === 'file:') {
-      statusEl.textContent = 'Could not load posts from local files. Serve this folder over HTTP.';
-    } else {
-      statusEl.textContent =
-        `${loaded.length} post${loaded.length === 1 ? '' : 's'} loaded; ` +
-        `${failed.length} failed (${failed.join(', ')}).`;
-    }
-  } else {
-    statusEl.textContent = `${loaded.length} post${loaded.length === 1 ? '' : 's'}`;
-  }
-
-  renderList();
 }
 
 /* ------------------------------------------------------------------
    List view rendering
    ------------------------------------------------------------------ */
-function renderList() {
+function renderList(tag) {
   const listEl = document.getElementById('post-list');
   const emptyEl = document.getElementById('empty-state');
+  const statusEl = document.getElementById('list-status');
+  const visible = POSTS.filter((post) => post.tag === tag);
+  const failedCount = POST_FILES.length - POSTS.length;
+  const count = `${visible.length} post${visible.length === 1 ? '' : 's'}`;
 
-  const visible = activeTag === 'All'
-    ? POSTS
-    : POSTS.filter((p) => p.tag === activeTag);
+  statusEl.textContent = count;
+  if (failedCount && location.protocol === 'file:') {
+    statusEl.textContent = 'Could not load posts from local files. Serve this folder over HTTP.';
+  } else if (failedCount) {
+    statusEl.textContent += `. ${failedCount} could not be loaded.`;
+  }
 
   listEl.innerHTML = '';
 
@@ -154,61 +144,89 @@ function renderList() {
     card.className = 'post-card pb-10 border-b border-rule last:border-b-0 last:pb-0';
     card.innerHTML = `
       <p class="text-[12px] uppercase tracking-[0.14em] text-ink/40 mb-3">${escapeHtml(post.tag)}</p>
-      <h2 class="mb-2">
-        <button type="button" class="post-title-btn font-serif text-[19px] leading-snug text-left hover:text-ink/70 transition-colors" data-file="${escapeHtml(post.file)}">
+      <h3 class="mb-2">
+        <a class="font-serif text-[19px] leading-snug hover:text-ink/70 transition-colors" href="#${encodeURIComponent(post.file)}">
           ${escapeHtml(post.title)}
-        </button>
-      </h2>
+        </a>
+      </h3>
       <p class="text-[13px] text-ink/45 mb-3">${formatDate(post.date)}</p>
       <p class="text-[14.5px] text-ink/70 leading-relaxed">${escapeHtml(post.summary)}</p>
     `;
     listEl.appendChild(card);
-  });
-
-  listEl.querySelectorAll('.post-title-btn').forEach((btn) => {
-    btn.addEventListener('click', () => showDetail(btn.dataset.file));
   });
 }
 
 /* ------------------------------------------------------------------
    Detail view rendering
    ------------------------------------------------------------------ */
-function showDetail(file) {
-  const post = POSTS.find((p) => p.file === file);
-  if (!post) return;
-
+function showDetail(post, categoryHash) {
+  const titleEl = document.getElementById('detail-title');
   document.getElementById('detail-tag').textContent = post.tag;
-  document.getElementById('detail-title').textContent = post.title;
+  titleEl.textContent = post.title;
   document.getElementById('detail-date').textContent = formatDate(post.date);
   const bodyEl = document.getElementById('detail-body');
   bodyEl.classList.toggle('compact-notes', post.compact);
   bodyEl.innerHTML = (post.math ? mathMarkdown : marked).parse(post.body);
 
+  document.querySelectorAll('[data-back-to-posts]').forEach((link) => {
+    link.setAttribute('href', categoryHash);
+  });
   document.getElementById('list-view').classList.add('hidden');
   document.getElementById('detail-view').classList.remove('hidden');
-  window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  titleEl.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: 'instant' });
 
   renderMath();
   highlightCode();
-
-  history.pushState({ view: 'detail', file }, '', '#' + encodeURIComponent(file));
 }
 
 function showList() {
   document.getElementById('detail-view').classList.add('hidden');
   document.getElementById('list-view').classList.remove('hidden');
-  history.pushState({ view: 'list' }, '', location.pathname);
+}
+
+function renderLocation() {
+  let fragment;
+  try {
+    fragment = decodeURIComponent(location.hash.slice(1));
+  } catch {
+    fragment = '';
+  }
+
+  const post = POSTS.find((post) => post.file === fragment);
+  const matchingTagLink = TAG_LINKS.find((link) =>
+    post ? link.dataset.tag === post.tag : link.hash === location.hash
+  );
+  const tagLink = matchingTagLink || DEFAULT_TAG_LINK;
+  setActiveTag(tagLink);
+
+  if (post) {
+    showDetail(post, tagLink.hash);
+    return;
+  }
+
+  showList();
+  renderList(tagLink.dataset.tag);
+  if (fragment === 'probability-notes') {
+    document.getElementById('probability-notes').scrollIntoView();
+  } else if (fragment === 'post-archive') {
+    document.getElementById('archive-title').focus({ preventScroll: true });
+    document.getElementById('post-archive').scrollIntoView();
+  } else if (matchingTagLink) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
 }
 
 /* ------------------------------------------------------------------
    Tag filter interactions
    ------------------------------------------------------------------ */
-function setActiveTag(tag) {
-  activeTag = tag;
-  document.querySelectorAll('.tag-link').forEach((btn) => {
-    btn.classList.toggle('is-active', btn.dataset.tag === tag);
+function setActiveTag(tagLink) {
+  document.getElementById('probability-notes').hidden = tagLink.dataset.tag !== 'Mathematics';
+  TAG_LINKS.forEach((link) => {
+    const selected = link === tagLink;
+    link.classList.toggle('is-active', selected);
+    link.setAttribute('aria-current', String(selected));
   });
-  renderList();
 }
 
 /* ------------------------------------------------------------------
@@ -319,28 +337,10 @@ function initReady(fn) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.tag-link').forEach((btn) => {
-    btn.addEventListener('click', () => setActiveTag(btn.dataset.tag));
-  });
-
-  document.getElementById('back-to-list').addEventListener('click', showList);
-  document.getElementById('back-to-list-bottom').addEventListener('click', showList);
-
-  window.addEventListener('popstate', (e) => {
-    if (e.state && e.state.view === 'detail') {
-      showDetail(e.state.file);
-    } else {
-      showList();
-    }
-  });
-
   initReady(async () => {
     configureMarkdownMath();
     await loadPosts();
-    // Deep-link support: #posts/demo.md opens directly to that post
-    if (location.hash) {
-      const file = decodeURIComponent(location.hash.slice(1));
-      if (POSTS.some((p) => p.file === file)) showDetail(file);
-    }
+    window.addEventListener('hashchange', renderLocation);
+    renderLocation();
   });
 });

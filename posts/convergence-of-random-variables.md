@@ -1,7 +1,7 @@
 ---
 title: "Convergence of Random Variables"
 date: "2026-11-08"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Chapter Seventeen Notes of MA-UY 3514 Honors Theory of Probability"

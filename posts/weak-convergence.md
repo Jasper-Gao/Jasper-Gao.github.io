@@ -1,7 +1,7 @@
 ---
 title: "Weak Convergence"
 date: "2026-11-09"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Chapter Eighteen Notes of MA-UY 3514 Honors Theory of Probability"

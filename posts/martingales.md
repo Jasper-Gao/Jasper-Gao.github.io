@@ -1,7 +1,7 @@
 ---
 title: "Martingales"
 date: "2026-11-19"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Chapter Twenty-Four Notes of MA-UY 3514 Honors Theory of Probability"

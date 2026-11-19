@@ -1,7 +1,7 @@
 ---
 title: "Monte Carlo Methods"
 date: "2026-11-14"
-tag: "Math & CS"
+tag: "Mathematics"
 compact: true
 math: true
 summary: "Cemgil's Monte Carlo Tutorial Notes"

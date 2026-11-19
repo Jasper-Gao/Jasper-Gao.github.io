@@ -1,7 +1,7 @@
 ---
 title: "Axioms of Probability"
 date: "2026-09-04"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter Two Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 

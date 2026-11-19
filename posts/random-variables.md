@@ -1,7 +1,7 @@
 ---
 title: "Random Variables"
 date: "2026-09-28"
-tag: "Math & CS"
+tag: "Mathematics"
 summary: "Chapter Eight Notes of MA-UY 3514 Honors Theory of Probability"
 ---
 
